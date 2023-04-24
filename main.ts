@@ -15,10 +15,10 @@ basic.forever(function () {
     if (start == 1) {
         basic.showString("C")
     }
-    if (input.buttonIsPressed(Button.A) && !(input.buttonIsPressed(Button.B) && input.logoIsPressed())) {
+    if (input.buttonIsPressed(Button.A) && !(input.buttonIsPressed(Button.B) && (!(input.logoIsPressed()) && false))) {
         code = 1
     }
-    if (code == 1) {
+    if (input.buttonIsPressed(Button.A) && !(input.buttonIsPressed(Button.B) && !(input.logoIsPressed())) && code == 1) {
         basic.showLeds(`
             # . . . .
             # . . . .
@@ -27,10 +27,10 @@ basic.forever(function () {
             # . . . .
             `)
     }
-    if (input.buttonIsPressed(Button.B) && !(input.buttonIsPressed(Button.A) && input.logoIsPressed())) {
+    if (input.buttonIsPressed(Button.B) && !(input.buttonIsPressed(Button.A) && (!(input.logoIsPressed()) && code == 1))) {
         code = 2
     }
-    if (code == 2) {
+    if (input.buttonIsPressed(Button.B) && !(input.buttonIsPressed(Button.A) && (!(input.logoIsPressed()) && code == 2))) {
         basic.showLeds(`
             # # . . .
             # # . . .
@@ -39,10 +39,10 @@ basic.forever(function () {
             # # . . .
             `)
     }
-    if (input.logoIsPressed() && !(input.buttonIsPressed(Button.B) && input.buttonIsPressed(Button.A))) {
+    if (input.logoIsPressed() && !(input.buttonIsPressed(Button.B) && (!(input.buttonIsPressed(Button.A)) && code == 2))) {
         code = 3
     }
-    if (code == 3) {
+    if (input.logoIsPressed() && !(input.buttonIsPressed(Button.A) && (!(input.buttonIsPressed(Button.B)) && code == 3))) {
         basic.showLeds(`
             # # # . .
             # # # . .
@@ -51,10 +51,10 @@ basic.forever(function () {
             # # # . .
             `)
     }
-    if (input.buttonIsPressed(Button.A) && !(input.buttonIsPressed(Button.B) && input.logoIsPressed())) {
+    if (input.buttonIsPressed(Button.A) && !(input.buttonIsPressed(Button.B) && (!(input.logoIsPressed()) && code == 3))) {
         code = 4
     }
-    if (code == 4) {
+    if (input.buttonIsPressed(Button.B) && (!(input.buttonIsPressed(Button.A)) && (!(input.logoIsPressed()) && code == 4))) {
         basic.showLeds(`
             # # # # .
             # # # # .
@@ -63,14 +63,14 @@ basic.forever(function () {
             # # # # .
             `)
     }
-    if (input.logoIsPressed() && !(input.buttonIsPressed(Button.B) && input.buttonIsPressed(Button.A))) {
+    if (input.logoIsPressed() && !(input.buttonIsPressed(Button.B) && (!(input.buttonIsPressed(Button.B)) && code == 4))) {
         code = 5
     }
-    if (code == 5) {
+    if (input.logoIsPressed() && !(input.buttonIsPressed(Button.A) && (!(input.buttonIsPressed(Button.A)) && code == 5))) {
         basic.showLeds(`
             # # # # #
             # # # # #
-            # # # # #
+            # # . # #
             # # # # #
             # # # # #
             `)
